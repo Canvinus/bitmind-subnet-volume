@@ -6,13 +6,13 @@ WANDB_ENTITY = 'bitmindai'
 
 DATASET_META = {
     "real": [
-        {"path": "bitmind/open-images-v7", "create_splits": False},
-        {"path": "bitmind/ffhq-256", "create_splits": False},
-        {"path": "bitmind/celeb-a-hq", "create_splits": False}
+        {"mnt_path": "/mnt/datasets/open-images-v7", "path": "~/datasets/open-images-v7", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/ffhq-256", "path": "~/datasets/ffhq-256", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/celeb-a-hq", "path": "~/datasets/celeb-a-hq", "create_splits": False}
     ],
     "fake": [
-        {"path": "bitmind/realvis-xl", "create_splits": False},
-        {"path": "bitmind/stable-diffusion-xl", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/realvis-xl", "path": "~/datasets/realvis-xl", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/stable-diffusion-xl", "path": "~/datasets/stable-diffusion-xl", "create_splits": False},
     ]
 }
 

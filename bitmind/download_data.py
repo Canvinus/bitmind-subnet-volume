@@ -1,4 +1,4 @@
-from datasets import load_dataset
+from datasets import load_from_disk
 import argparse
 import time
 import sys
@@ -8,6 +8,14 @@ import glob
 
 from bitmind.constants import DATASET_META, HUGGINGFACE_CACHE_DIR
 
+
+def rsync_folders(source, destination):
+    rsync_command = ["rsync", "-av", "--progress", source, destination]
+    try:
+        subprocess.run(rsync_command, check=True)
+        print(f"Sync from {source} to {destination} completed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error during rsync: {e}")
 
 def clear_cache(cache_dir):
     """Clears lock files and incomplete downloads from the cache directory."""
@@ -44,11 +52,9 @@ def download_dataset(dataset_path, download_mode: str, cache_dir: str, max_wait:
     print(f"Downloading {dataset_path} dataset...")
     while True:
         try:
-            dataset = load_dataset(
-                dataset_path,
-                cache_dir=cache_dir,
-                download_mode=download_mode,
-                trust_remote_code=True)
+            dataset = load_from_disk(
+                dataset_path
+                )
             break
         except Exception as e:
             print(e)
@@ -90,4 +96,4 @@ if __name__ == '__main__':
 
     for dataset_type in DATASET_META:
         for dataset in DATASET_META[dataset_type]:
-            download_dataset(dataset['path'], download_mode, args.cache_dir)
+            rsync_folders(dataset['mnt_path'], dataset['path'])
