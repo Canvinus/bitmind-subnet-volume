@@ -1,18 +1,17 @@
 import os
 
-
 WANDB_PROJECT = 'bitmind-subnet'
 WANDB_ENTITY = 'bitmindai'
 
 DATASET_META = {
     "real": [
-        {"mnt_path": "/mnt/datasets/open-images-v7", "path": "~/datasets/open-images-v7", "create_splits": False},
-        {"mnt_path": "/mnt/datasets/ffhq-256", "path": "~/datasets/ffhq-256", "create_splits": False},
-        {"mnt_path": "/mnt/datasets/celeb-a-hq", "path": "~/datasets/celeb-a-hq", "create_splits": False}
+        {"mnt_path": "/mnt/datasets/open-images-v7", "path": f"{os.getenv('HOME')}/datasets/open-images-v7", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/ffhq-256", "path": f"{os.getenv('HOME')}/datasets/ffhq-256", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/celeb-a-hq", "path": f"{os.getenv('HOME')}/datasets/celeb-a-hq", "create_splits": False}
     ],
     "fake": [
-        {"mnt_path": "/mnt/datasets/realvis-xl", "path": "~/datasets/realvis-xl", "create_splits": False},
-        {"mnt_path": "/mnt/datasets/stable-diffusion-xl", "path": "~/datasets/stable-diffusion-xl", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/realvis-xl", "path": f"{os.getenv('HOME')}/datasets/realvis-xl", "create_splits": False},
+        {"mnt_path": "/mnt/datasets/stable-diffusion-xl", "path": f"{os.getenv('HOME')}/datasets/stable-diffusion-xl", "create_splits": False},
     ]
 }
 
@@ -62,4 +61,3 @@ DIFFUSER_ARGS = {
 DIFFUSER_NAMES = list(DIFFUSER_ARGS.keys())
 
 IMAGE_ANNOTATION_MODEL = "Salesforce/blip2-opt-2.7b-coco"
-

@@ -5,9 +5,9 @@ import sys
 import os
 import subprocess
 import glob
+from dirsync import sync
 
 from bitmind.constants import DATASET_META, HUGGINGFACE_CACHE_DIR
-
 
 def rsync_folders(source, destination):
     rsync_command = ["rsync", "-av", "--progress", source, destination]
